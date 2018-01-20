@@ -20,4 +20,5 @@ locale-gen
 echo 'LANG=en_US.UTF-8' >> /etc/locale.conf
 
 # set hostname
+touch /etc/hostname
 echo 'archpad' >> /etc/hostname
