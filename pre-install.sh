@@ -32,12 +32,6 @@ echo /dev/sda3
 echo y
 ) | mkfs.ext4
 
-# mount main partition
-mount /dev/sda3 /mnt
-
-# start main installation
-pacstrap /mnt base
-
 # generate fstab
 genfstab -U /mnt >> /mnt/etc/fstab
 
