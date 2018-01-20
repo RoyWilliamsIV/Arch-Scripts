@@ -10,3 +10,6 @@ It creates three partitions.
 3. The remainder of the drive as an ext4 (root partition)
 
 The script installs grub and intel-ucode drivers after finishing.
+
+To download:
+git clone --bare https://github.com/RoyWilliamsIV/arch-install
