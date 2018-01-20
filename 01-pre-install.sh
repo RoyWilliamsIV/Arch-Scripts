@@ -27,7 +27,5 @@ echo y    # Confirm changes
 ) | gdisk /dev/sda 
 
 # format main partition as ext4
-(
-echo y
-) | mkfs.ext4 /dev/sda3
+yes | mkfs.ext4 /dev/sda3
 
