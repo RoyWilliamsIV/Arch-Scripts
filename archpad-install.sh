@@ -21,13 +21,13 @@ echo n    # 3. Create main partition
 echo 3    # Partition number
 echo ""     # First sector (Accept default: 1)
 echo ""     # Last sector (Accept default: varies)
-echo EF02 # Change type to BIOS
+echo ""     # Change type to main
 echo w    # Write changes
 echo y    # Confirm changes
 ) | gdisk /dev/sda 
 
 # format main partition as ext4
-mkfs.ext4 /dev/sda3
+y | mkfs.ext4 /dev/sda3
 
 # mount main partition
 mount /dev/sda3 /mnt
