@@ -28,7 +28,6 @@ echo y    # Confirm changes
 
 # format main partition as ext4
 (
-echo /dev/sda3
 echo y
-) | mkfs.ext4
+) | mkfs.ext4 /dev/sda3
 
