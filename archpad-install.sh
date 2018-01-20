@@ -57,7 +57,8 @@ genfstab -U /mnt >> /mnt/etc/fstab
 #######################
 
 # enter chroot and continue script
-(
+arch-chroot /mnt << EOF
+
 # set time zone
 ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime
 
@@ -101,6 +102,6 @@ grub-mkconfig -o /boot/grub/grub.cfg
 echo "Install finished - please remember to set new root password using passwd."
 
 
-) | arch-chroot /mnt
+EOF
 
 
