@@ -4,7 +4,7 @@
 genfstab -U /mnt >> /mnt/etc/fstab
 
 # enter chroot
-arch-chroot /mnt
+arch-chroot /mnt &
 
 # set time zone
 ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime
