@@ -1,7 +1,8 @@
-# arch-install-t60
-A simple install bash script for my Thinkpad T60.
+# Arch Install T60
+---
+## A simple install bash script for my Thinkpad T60.
 
-The region is set to America/Chicago, and the keyboard layout is en_US.UTF-8.
+###The region is set to America/Chicago, and the keyboard layout is en_US.UTF-8.
 
 It creates three partitions.
 
@@ -10,11 +11,7 @@ It creates three partitions.
 3. The remainder of the drive as an ext4 (root partition)
 
 The script installs grub and intel-ucode drivers after finishing.
+---
+*To download:*
 
-To download:
-
-wget https://github.com/RoyWilliamsIV/arch-install-t60/blame/master/00-downloader.sh
-
-or 
-
-wget https://git.io/vNgcn
+wget
