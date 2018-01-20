@@ -12,4 +12,9 @@ It creates three partitions.
 The script installs grub and intel-ucode drivers after finishing.
 
 To download:
-git clone --bare https://github.com/RoyWilliamsIV/arch-install
+
+wget https://github.com/RoyWilliamsIV/arch-install-t60/blame/master/00-downloader.sh
+
+or 
+
+wget https://git.io/vNgcn
