@@ -1,5 +1,15 @@
 #!/bin/bash
 
+#####################################################################################
+# Please do not use this script blindly. Review and edit before use. Read the wiki! #
+#####################################################################################
+# Roy Williams IV - 2018 - GPLv3 #
+##################################
+
+###############
+# Pre-Install #
+###############
+
 # update system clock
 timedatectl set-ntp true
 
@@ -29,6 +39,10 @@ echo y    # Confirm changes
 # format main partition as ext4
 yes | mkfs.ext4 /dev/sda3
 
+#####################
+# Mount and Install #
+#####################
+
 # mount main partition
 mount /dev/sda3 /mnt
 
@@ -38,9 +52,12 @@ pacstrap /mnt base
 # generate fstab
 genfstab -U /mnt >> /mnt/etc/fstab
 
-# enter chroot
-arch-chroot /mnt &
+#######################
+# Chroot Setup / Grub #
+#######################
 
+# enter chroot and continue script
+(
 # set time zone
 ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime
 
@@ -60,11 +77,19 @@ echo 'LANG=en_US.UTF-8' >> /etc/locale.conf
 touch /etc/hostname
 echo 'archpad' >> /etc/hostname
 
+#########################
+# Install Network Tools #
+#########################
+
 # install network utilites
-pacman -S iw wpa_supplicant dialog
+yes | pacman -S iw wpa_supplicant dialog
+
+################################
+# Install Grub and Intel-Ucode #
+################################
 
 # install intel-ucode and grub packages
-pacman -S intel-ucode grub
+yes | pacman -S intel-ucode grub
 
 # install grub
 grub-install /dev/sda
@@ -74,3 +99,8 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 # remind user to set new password
 echo "Install finished - please remember to set new root password using passwd."
+
+
+) | arch-chroot /mnt
+
+
