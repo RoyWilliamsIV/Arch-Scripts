@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # install network utilites
 pacman -S iw wpa_supplicant dialog
 
