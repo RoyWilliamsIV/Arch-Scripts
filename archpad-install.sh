@@ -13,28 +13,28 @@
 # update system clock
 timedatectl set-ntp true
 
-# partition the disk
-gdisk /dev/sda << EOF
-o    # Create a new empty GPT partition table
-y    # Confirm changes
-n    # 1. Create BIOS partition
-1    # Partition number
-     # First sector (Accept default: 1)
-+1M  # Last sector (Create 1MB size)
-EF02 # Change type to BIOS
-n    # 2. Create swap partition
-2    # Partition number
-     # First sector (Accept default: 1)
-+4G  # Last sector (Create 4GB size)
-8200 # Change type to BIOS
-n    # 3. Create main partition
-3    # Partition number
-     # First sector (Accept default: 1)
-     # Last sector (Accept default: varies)
-     # Leave as default type
-w    # Write changes
-y    # Confirm changes
-EOF
+# disk partitioning
+(
+echo o    # Create a new empty GPT partition table
+echo y    # Confirm changes
+echo n    # 1. Create BIOS partition
+echo 1      # Partition number
+echo ""     # First sector (Accept default: 1)
+echo +1M    # Last sector (Create 1MB size)
+echo EF02   # Change type to BIOS
+echo n    # 2. Create swap partition
+echo 2      # Partition number
+echo ""     # First sector (Accept default: 1)
+echo +4G    # Last sector (Create 4GB size)
+echo 8200   # Change type to BIOS
+echo n    # 3. Create main partition
+echo 3      # Partition number
+echo ""     # First sector (Accept default: 1)
+echo ""     # Last sector (Accept default: varies)
+echo ""     # Change type to main
+echo w      # Write changes
+echo y      # Confirm changes
+) | gdisk /dev/sda 
 
 # format main partition as ext4
 yes | mkfs.ext4 /dev/sda3
