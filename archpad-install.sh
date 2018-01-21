@@ -6,8 +6,6 @@
 # Roy Williams IV - 2018 - GPLv3 #
 ##################################
 
-dialog --infobox "Installing Arch - Please be patient..." 3 42 
-
 ###############
 # Pre-Install #
 ###############
