@@ -6,7 +6,7 @@
 # Roy Williams IV - 2018 - GPLv3 #
 ##################################
 
-dialog --infobox "Installing Arch - Please be patient..." 3 42 &
+dialog --infobox "Installing Arch - Please be patient..." 3 42 
 
 ###############
 # Pre-Install #
@@ -104,7 +104,5 @@ grub-mkconfig -o /boot/grub/grub.cfg
 echo "Install finished - please remember to set new root password using passwd."
 
 EOF
-
-dialog --msgbox "Install Finished!\n\nRemember to set a new root password using passwd." 8 30
 
 
