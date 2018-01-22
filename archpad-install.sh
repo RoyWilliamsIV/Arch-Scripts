@@ -36,8 +36,13 @@ echo w      # Write changes
 echo y      # Confirm changes
 ) | gdisk /dev/sda 
 
-# format main partition as ext4
+# format main partitions ext4
 yes | mkfs.ext4 /dev/sda3
+yes | mkfs.ext4 /dev/sda2
+
+# configure swap
+mkswap /dev/sda2
+swapon /dev/sda2
 
 #####################
 # Mount and Install #
