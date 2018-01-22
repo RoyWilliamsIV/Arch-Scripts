@@ -25,10 +25,15 @@ echo "# Allow all wheel usergroup sudo access
 %wheel  ALL=(ALL) ALL" >> /etc/sudoers
 
 # i3 Configuration
-## Install needed packages
-pacman --noconfirm -S i3wm i3status dmenu i3lock
-## Copy sample config files over
-# TODO
+
+  ## Install Xorg 
+pacman --noconfirm -S xorg xorg-xinit
+  ## Install needed packages
+
+pacman --noconfirm -S i3wm i3status dmenu i3lock compton
+  ## Copy sample config files over
+
+# TODO - config add compton and i3 to .xinitrc
 
 # Install other packages
 pacman --noconfirm -S firefox
