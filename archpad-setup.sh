@@ -18,10 +18,18 @@ useradd -m -G wheel -s /bin/bash roy
 passwd roy
 
 # Install Sudo
-yes | pacman -S sudo
+pacman --noconfirm -S sudo
 
 # Configure Sudo for wheel Usergroup
 echo "# Allow all wheel usergroup sudo access
 %wheel  ALL=(ALL) ALL" >> /etc/sudoers
 
+# i3 Configuration
+## Install needed packages
+pacman --noconfirm -S i3wm i3status dmenu i3lock
+## Copy sample config files over
+# TODO
+
+# Install other packages
+pacman --noconfirm -S firefox
 
