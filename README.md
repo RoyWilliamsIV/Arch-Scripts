@@ -1,4 +1,4 @@
-These are some simple install scripts that I've made for my own, personal use.
+# These are some simple install scripts that I've made for my own, personal use.
 
 The scripts are made specifically for a Thinkpad T60 using the Arch x32 Fork, so many commands are specific to this machine (drivers, graphics, etc).
 
