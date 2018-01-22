@@ -2,7 +2,11 @@
 
 The scripts are made specifically for a **Thinkpad T60** using the **Arch x32 Fork**, so many commands are specific to this machine (drivers, graphics, etc).
 
+---
+
 *Feel free to use and modify this, but* ***PLEASE*** *review it for yourself before running it!*
+
+---
 
 It almost exactly follows the install process found on the [Arch Wiki](https://wiki.archlinux.org/index.php/Installation_guide).
 
@@ -15,6 +19,8 @@ It creates three partitions.
 3. The remainder of the drive as an ext4 (root partition).
 
 The script installs grub and intel-ucode drivers after finishing.
+
+---
 
 *To download:*
 ```
