@@ -17,4 +17,4 @@ yes | pacman -S sudo
 
 # Configure Sudo for wheel Usergroup
 echo "# Allow all wheel usergroup sudo access
-%wheel  ALL=(ALL) ALL" >> 
+%wheel  ALL=(ALL) ALL" >> /etc/sudoers
