@@ -24,12 +24,26 @@ pacman --noconfirm -S sudo
 echo "# Allow all wheel usergroup sudo access
 %wheel  ALL=(ALL) ALL" >> /etc/sudoers
 
-# i3 Configuration
+# GUI Configuration
 
-  ## Install Xorg 
+## Install Xorg 
 pacman --noconfirm -S xorg xorg-xinit
-  ## Install needed packages
 
+## Install ATI drivers
+pacman --noconfirm -S mesa xf86-video-ati
+
+## Install tlp and Thinkpad Battery Driver
+pacman --noconfirm -S tlp tp_smapi
+
+## Configure tlp
+### enable systemd services
+systemctl enable tlp.service
+systemctl enable tlp-sleep.service
+### mask conflicting services
+systemctl mask systemd-rfkill.service
+systemctl mask systemd-rfkill.socket
+
+## Install i3 packages
 pacman --noconfirm -S i3wm i3status dmenu i3lock compton
   ## Copy sample config files over
 
