@@ -1,8 +1,8 @@
 # These are some simple install scripts that I've made for my own, personal use.
 
-The scripts are made specifically for a Thinkpad T60 using the Arch x32 Fork, so many commands are specific to this machine (drivers, graphics, etc).
+The scripts are made specifically for a ***Thinkpad T60*** using the Arch x32 Fork, so many commands are specific to this machine (drivers, graphics, etc).
 
-*Feel free to use and modify this, but* **PLEASE** *review it for yourself before running it!*
+*Feel free to use and modify this, but* ***PLEASE*** *review it for yourself before running it!*
 
 It almost exactly follows the install process found on the [Arch Wiki](https://wiki.archlinux.org/index.php/Installation_guide).
 
