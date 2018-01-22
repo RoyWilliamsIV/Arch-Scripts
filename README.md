@@ -1,7 +1,8 @@
-# This is a simple bash script that I made to install Arch on my Thinkpad T60.
+These are some simple install scripts that I've made for my own, personal use.
+
+The scripts are made specifically for a Thinkpad T60 using the Arch x32 Fork, so many commands are specific to this machine (drivers, graphics, etc).
 
 *Feel free to use and modify this, but* **PLEASE** *review it for yourself before running it!*
-
 
 It almost exactly follows the install process found on the [Arch Wiki](https://wiki.archlinux.org/index.php/Installation_guide).
 
@@ -15,9 +16,8 @@ It creates three partitions.
 
 The script installs grub and intel-ucode drivers after finishing.
 
-
 *To download:*
 ```
-wget https://raw.githubusercontent.com/RoyWilliamsIV/Arch-Install-T60/master/archpad-install.sh
-bash archpad-install.sh
+wget https://raw.githubusercontent.com/RoyWilliamsIV/Arch-Scripts/master/install.sh
+bash install.sh
 ```
