@@ -18,6 +18,6 @@ The script installs grub and intel-ucode drivers after finishing.
 
 *To download:*
 ```
-wget https://raw.githubusercontent.com/RoyWilliamsIV/Arch-Scripts/master/install.sh
-bash install.sh
+wget https://raw.githubusercontent.com/RoyWilliamsIV/Arch-Scripts/master/archpad-install.sh
+bash archpad-install.sh
 ```
