@@ -71,7 +71,7 @@ hwclock --systohc
 
 # set locale
 
-echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen
+echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen
 
 locale-gen
 
@@ -80,6 +80,14 @@ echo 'LANG=en_US.UTF-8' >> /etc/locale.conf
 
 # set hostname
 echo 'archpad' >> /etc/hostname
+
+# set hosts
+(
+echo "127.0.0.1	localhost"
+echo "::1		localhost"
+echo "127.0.1.1	archpad.localdomain	archpad"
+) >> /etc/hosts
+
 
 #########################
 # Install Network Tools #
