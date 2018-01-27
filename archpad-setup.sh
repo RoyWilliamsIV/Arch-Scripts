@@ -26,6 +26,8 @@ echo "# Allow all wheel usergroup sudo access
 
 # GUI Configuration
 
+## Install ALSA and Pulse
+pacman --noconfirm -S alsa-utils pulseaudio
 ## Install Xorg 
 pacman --noconfirm -S xorg-server xorg-xinit
 
@@ -44,11 +46,15 @@ systemctl mask systemd-rfkill.service
 systemctl mask systemd-rfkill.socket
 
 ## Install i3 packages
-pacman --noconfirm -S i3wm i3status dmenu i3lock compton
+pacman --noconfirm -S i3-wm i3status dmenu i3lock compton
   ## Copy sample config files over
 
-# TODO - config add compton and i3 to .xinitrc
+# TODO - .xinitrc config
+# TODO - config files
 
 # Install other packages
-pacman --noconfirm -S firefox qutebrowser
+pacman --noconfirm -S firefox qutebrowser kodi termite feh
+
+## Create .config folder
+mkdir /home/roy/.config
 
