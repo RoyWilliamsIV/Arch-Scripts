@@ -27,10 +27,10 @@ echo "# Allow all wheel usergroup sudo access
 # GUI Configuration
 
 ## Install Xorg 
-pacman --noconfirm -S xorg xorg-xinit
+pacman --noconfirm -S xorg-server xorg-xinit
 
 ## Install ATI drivers
-pacman --noconfirm -S mesa xf86-video-ati
+pacman --noconfirm -S mesa xf86-video-intel
 
 ## Install tlp and Thinkpad Battery Driver
 pacman --noconfirm -S tlp tp_smapi
@@ -50,5 +50,5 @@ pacman --noconfirm -S i3wm i3status dmenu i3lock compton
 # TODO - config add compton and i3 to .xinitrc
 
 # Install other packages
-pacman --noconfirm -S firefox
+pacman --noconfirm -S firefox qutebrowser
 
