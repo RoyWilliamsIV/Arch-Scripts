@@ -38,7 +38,6 @@ echo y      # Confirm changes
 
 # format main partitions ext4
 yes | mkfs.ext4 /dev/sda3
-yes | mkfs.ext4 /dev/sda2
 
 # configure swap
 mkswap /dev/sda2
