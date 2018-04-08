@@ -1,8 +1,10 @@
 #!/bin/bash
-# This script simply downloads and runs the others.
+# This script simply downloads a folder full of the scripts in this repo.
 
 GIT="https://raw.githubusercontent.com/RoyWilliamsIV/Arch-Scripts/master/"  # Git path variable
 
-wget "$GIT/archpad-install.sh" ; bash archpad-install.sh                    # Download and run install script
+mkdir "ArchPad Scripts" ; cd "Archpad Scripts" # Make folder for scripts and enter it
 
-arch-chroot /mnt ; wget "$GIT/archpad-setup.sh" ; bash archpad-setup.sh     # re-enter chroot and download/run next script
+wget "$GIT/archpad-install.sh" # Download scripts
+
+echo "## Downloading complete. Use them wisely. ##"
