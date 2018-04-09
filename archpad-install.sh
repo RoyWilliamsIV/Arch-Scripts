@@ -6,6 +6,18 @@
 # Roy Williams IV - 2018 - GPLv3 #
 ##################################
 
+#####################
+# User Confirmation #
+#####################
+
+echo "Please be sure that you are okay with the following changes to your machine:"
+echo "# YOUR HARDDRIVE WILL BE COMPLETELY FORMATTED AND PARTITIONED!!! #"
+echo "1. Drive Setup"
+echo "  a. 200MB boot Partition"
+echo "  b. 8GB swap Partition"
+echo "  c. root partition"
+
+
 ###############
 # Pre-Install #
 ###############
@@ -15,29 +27,41 @@ timedatectl set-ntp true
 
 # disk partitioning
 (
-echo o    # Create a new empty GPT partition table
-echo y    # Confirm changes
-echo n    # 1. Create BIOS partition
+echo d    # Delete current partition table
+echo o    # Create new partition table
+echo n    # 1. Create BOOT partition
+echo p      # primary partition type
 echo 1      # Partition number
 echo ""     # First sector (Accept default: 1)
-echo +1M    # Last sector (Create 1MB size)
-echo EF02   # Change type to BIOS
-echo n    # 2. Create swap partition
+echo +200M  # Last sector (Create 200MB size)
+echo n    # 2. Create SWAP partition
+echo p      # primary partition type
 echo 2      # Partition number
 echo ""     # First sector (Accept default: 1)
-echo +4G    # Last sector (Create 4GB size)
-echo 8200   # Change type to BIOS
-echo n    # 3. Create main partition
+echo +8G    # Last sector (Create 8GB size)
+echo n    # 3. Create ROOT partition
+echo p      # primary partition type
+echo 3      # Partition number
+echo ""     # First sector (Accept default: 1)
+echo +25G   # Last sector (Create 25GB size)
+echo n    # 4. Create main partition
 echo 3      # Partition number
 echo ""     # First sector (Accept default: 1)
 echo ""     # Last sector (Accept default: varies)
 echo ""     # Change type to main
 echo w      # Write changes
 echo y      # Confirm changes
-) | gdisk /dev/sda 
+) | fdisk /dev/sda 
 
-# format main partitions ext4
+# /dev/sda1 - boot
+# /dev/sda2 - swap
+# /dev/sda3 - root
+# /dev/sda4 - home
+
+# format boot, root, and main partitions ext4
+yes | mkfs.ext4 /dev/sda1
 yes | mkfs.ext4 /dev/sda3
+yes | mkfs.ext4 /dev/sda4
 
 # configure swap
 mkswap /dev/sda2
@@ -47,11 +71,17 @@ swapon /dev/sda2
 # Mount and Install #
 #####################
 
-# mount main partition
+# make needed directories
+mkdir /mnt/home
+mkdir /mnt/boot
+
+# mount root partition
+mount /dev/sda1 /mnt/boot
 mount /dev/sda3 /mnt
+mount /dev/sda4 /mnt/home
 
 # start main installation
-pacstrap /mnt base
+pacstrap /mnt base base-devel iw wpa_supplicant dialog intel-ucode grub
 
 # generate fstab
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -88,20 +118,9 @@ echo "::1		localhost"
 echo "127.0.1.1	archpad.localdomain	archpad"
 ) >> /etc/hosts
 
-
-#########################
-# Install Network Tools #
-#########################
-
-# install network utilites
-yes | pacman -S iw wpa_supplicant dialog
-
 ################################
 # Install Grub and Intel-Ucode #
 ################################
-
-# install intel-ucode and grub packages
-yes | pacman -S intel-ucode grub
 
 # install grub
 grub-install /dev/sda
@@ -110,7 +129,9 @@ grub-install /dev/sda
 grub-mkconfig -o /boot/grub/grub.cfg
 
 # remind user to set new password
-echo "Install finished - please remember to set new root password using passwd."
+# echo "Install finished - please remember to set new root password using passwd."
+
+passwd
 
 EOF
 
