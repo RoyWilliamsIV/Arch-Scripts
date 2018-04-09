@@ -6,18 +6,6 @@
 # Roy Williams IV - 2018 - GPLv3 #
 ##################################
 
-#####################
-# User Confirmation #
-#####################
-
-echo "Please be sure that you are okay with the following changes to your machine:"
-echo "# YOUR HARDDRIVE WILL BE COMPLETELY FORMATTED AND PARTITIONED!!! #"
-echo "1. Drive Setup"
-echo "  a. 200MB boot Partition"
-echo "  b. 8GB swap Partition"
-echo "  c. root partition"
-
-
 ###############
 # Pre-Install #
 ###############
