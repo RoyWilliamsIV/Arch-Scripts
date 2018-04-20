@@ -36,7 +36,6 @@ echo p      # primary partition type
 echo 4      # Partition number
 echo ""     # First sector (Accept default: 1)
 echo ""     # Last sector (Accept default: varies)
-echo ""     # Change type to main
 echo w      # Write changes
 ) | fdisk /dev/sda 
 
