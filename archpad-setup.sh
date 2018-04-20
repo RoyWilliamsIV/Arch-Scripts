@@ -8,16 +8,11 @@
 # Roy Williams IV - 2018 - GPLv3 #
 ##################################
 
-# Configure swap to be loaded on startup
-mkswap /dev/sda2
-swapon /dev/sda2
-echo "UUID=$(lsblk -no UUID /dev/sda2) none swap defaults 0 0" >> /etc/fstab
-
 # Create User "roy" in wheel Usergroup, prompt user for password.
 useradd -m -G wheel -s /bin/bash roy
 passwd roy
 
-# Install Sudo
+# Install Sudo (or confirm already installed)
 pacman --noconfirm -S sudo
 
 # Configure Sudo for wheel Usergroup
@@ -27,7 +22,8 @@ echo "# Allow all wheel usergroup sudo access
 # GUI Configuration
 
 ## Install ALSA and Pulse
-pacman --noconfirm -S alsa-utils pulseaudio
+pacman --noconfirm -S alsa-utils
+
 ## Install Xorg 
 pacman --noconfirm -S xorg-server xorg-xinit
 
@@ -47,7 +43,7 @@ systemctl mask systemd-rfkill.socket
 
 ## Install i3 packages
 pacman --noconfirm -S \
-  i3-wm \
+  i3-gaps \
   i3status \
   dmenu \
   i3lock \
