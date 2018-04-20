@@ -58,7 +58,7 @@ pacman --noconfirm -S \
 pacman --noconfirm -S \
   feh \
   chromium \
-  terminology \
+  termite \
   thunar \
   tumbler \
   gvfs \
