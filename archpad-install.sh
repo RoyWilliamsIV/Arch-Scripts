@@ -15,7 +15,6 @@ timedatectl set-ntp true
 
 # disk partitioning
 (
-echo d    # Delete current partition table
 echo o    # Create new partition table
 echo n    # 1. Create BOOT partition
 echo p      # primary partition type
@@ -33,12 +32,12 @@ echo 3      # Partition number
 echo ""     # First sector (Accept default: 1)
 echo +25G   # Last sector (Create 25GB size)
 echo n    # 4. Create main partition
-echo 3      # Partition number
+echo p      # primary partition type
+echo 4      # Partition number
 echo ""     # First sector (Accept default: 1)
 echo ""     # Last sector (Accept default: varies)
 echo ""     # Change type to main
 echo w      # Write changes
-echo y      # Confirm changes
 ) | fdisk /dev/sda 
 
 # /dev/sda1 - boot
@@ -59,13 +58,11 @@ swapon /dev/sda2
 # Mount and Install #
 #####################
 
-# make needed directories
-mkdir /mnt/home
-mkdir /mnt/boot
-
-# mount root partition
-mount /dev/sda1 /mnt/boot
+# mount partitions
 mount /dev/sda3 /mnt
+mkdir /mnt/boot
+mount /dev/sda1 /mnt/boot
+mkdir /mnt/home
 mount /dev/sda4 /mnt/home
 
 # start main installation
