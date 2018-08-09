@@ -9,6 +9,7 @@
 ###############
 # Pre-Install #
 ###############
+PreInstall() {
 
 # update system clock
 timedatectl set-ntp true
@@ -52,10 +53,13 @@ yes | mkfs.ext4 /dev/sda4
 # configure swap
 mkswap /dev/sda2
 swapon /dev/sda2
+}
 
 #####################
 # Mount and Install #
 #####################
+
+MountInstall(){
 
 # mount partitions
 mount /dev/sda3 /mnt
@@ -69,10 +73,13 @@ pacstrap /mnt base base-devel iw wpa_supplicant dialog intel-ucode grub
 
 # generate fstab
 genfstab -U /mnt >> /mnt/etc/fstab
+}
 
 #######################
 # Chroot Setup / Grub #
 #######################
+
+ChrootSetup(){
 
 # enter chroot and continue script
 arch-chroot /mnt << EOF
@@ -101,10 +108,13 @@ echo "127.0.0.1	localhost"
 echo "::1		localhost"
 echo "127.0.1.1	archpad.localdomain	archpad"
 ) >> /etc/hosts
+}
 
 ################################
 # Install Grub and Intel-Ucode #
 ################################
+
+InstallGrub(){
 
 # install grub
 grub-install /dev/sda
@@ -116,6 +126,15 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # echo "Install finished - please remember to set new root password using passwd."
 
 passwd
+}
+
+###########
+# M A I N #
+###########
+PreInstall
+MountInstall
+ChrootSetup
+InstallGrub
 
 EOF
 
